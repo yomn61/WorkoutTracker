@@ -6,33 +6,11 @@
     <string name="weight_no_hint">Amount (Weight/Reps)</string>
     <string name="today_button">Set to Today</string>
 
-    <string-array name="workouts">
-        <item>Crunches</item>
-        <item>Deadlift</item>
-        <item>Dumbbell Row</item>
-        <item>Dumbbell Fly</item>
-        <item>Hyperextension</item>
-        <item>Lat Pulldown</item>
-        <item>PullUps</item>
-        <item>RDL</item>
-        <item>Sitting Row</item>
-        <item>Bench Press</item>
-        <item>Squats</item>
-        <item>Lunges</item>
-        <item>Dumbbell Fly</item>
-        <item>Hyperextension</item>
-        <item>Lat Pulldown</item>
-        <item>PullUps</item>
-        <item>RDL</item>
-        <item>Sitting Row</item>
-        <item>Tricep Dips</item>
-        <item>Skull Crushers</item>
-    </string-array>
-
     <string-array name="muscle_groups">
         <item>Abs</item>
         <item>Arms</item>
         <item>Back</item>
+        <item>Cardio</item>
         <item>Chest</item>
         <item>Legs</item>
         <item>Shoulders</item>
@@ -40,12 +18,18 @@
 
     <string-array name="abs_workouts">
         <item>Crunches</item>
+        <item>V-Ups</item>
+        <item>Plank</item>
+        <item>Side Plank</item>
+        <item>Leg Lifts</item>
+        <item>Bicycles</item>
+        <item>Roman Twists</item>
     </string-array>
 
     <string-array name="back_workouts">
+        <item>ChinUps</item>
         <item>Deadlift</item>
         <item>Dumbbell Row</item>
-        <item>Dumbbell Fly</item>
         <item>Hyperextension</item>
         <item>Lat Pulldown</item>
         <item>PullUps</item>
@@ -53,21 +37,46 @@
         <item>Sitting Row</item>
     </string-array>
 
+    <string-array name="cardio_workouts">
+        <item>Treadmill</item>
+        <item>Running</item>
+        <item>Sauna</item>
+    </string-array>
+
     <string-array name="chest_workouts">
         <item>Bench Press</item>
+        <item>Cable Fly</item>
+        <item>Decline Press</item>
+        <item>Incline Press</item>
+        <item>Pushups</item>
     </string-array>
 
     <string-array name="legs_workouts">
         <item>Squats</item>
+        <item>Leg Curls</item>
+        <item>Leg Extensions</item>
+        <item>Leg Press</item>
         <item>Lunges</item>
     </string-array>
 
     <string-array name="arms_workouts">
         <item>Tricep Dips</item>
         <item>Skull Crushers</item>
+        <item>Tricep PullDowns</item>
+        <item>Close Grip Bench Press</item>
+        <item>Curls (Barbell)</item>
+        <item>Curls (Dumbbells)</item>
+        <item>Curls (EZ Bar)</item>
+        <item>Curls (Cable)</item>
     </string-array>
 
     <string-array name="shoulders_workouts">
         <item>Military Press</item>
+        <item>Shrugs (Barbell)</item>
+        <item>Shrugs (Dumbbell)</item>
+        <item>Side Laterals</item>
+        <item>Bent Over Laterals</item>
+        <item>Reverse Fly</item>
+        <item>Front Dumbbell Raise</item>
     </string-array>
 </resources>
