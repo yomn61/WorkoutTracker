@@ -97,6 +97,9 @@ public class DataEntryActivity extends AppCompatActivity
         // Get the specified weight or reps
         int weight = Integer.parseInt(editText.getText().toString());
 
+        Spinner muscleGroupSpinner = (Spinner) findViewById(R.id.muscle_group_spinner);
+        String muscleGroup = muscleGroupSpinner.getSelectedItem().toString();
+
         // Get the specified workout
         Spinner workoutSpinner = (Spinner) findViewById(R.id.workout_spinner);
         String workout = workoutSpinner.getSelectedItem().toString();
@@ -106,7 +109,7 @@ public class DataEntryActivity extends AppCompatActivity
         Date date = new Date(calendarView.getDate());
 
         // Add workout to the database
-        addWorkout(getApplicationContext(), date, workout, weight);
+        addWorkout(getApplicationContext(), date, muscleGroup, workout, weight);
     }
 
     private void initSpinners()

@@ -11,6 +11,8 @@ import java.util.Date;
 
 import static android.provider.BaseColumns._ID;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_DATE;
+import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry
+        .COLUMN_NAME_MUSCLE_GROUP;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_WEIGHT;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_WORKOUT;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.TABLE_NAME;
@@ -21,11 +23,11 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
     private final static String TAG = WorkoutsDbHelper.class.toString();
 
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = TABLE_NAME + ".db";
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_NAME + " (" + _ID +
-            " INTEGER PRIMARY KEY," + COLUMN_NAME_DATE + " TEXT," + COLUMN_NAME_WORKOUT + " TEXT,"
-            + COLUMN_NAME_WEIGHT + " TEXT)";
+            " INTEGER PRIMARY KEY," + COLUMN_NAME_DATE + " TEXT," + COLUMN_NAME_MUSCLE_GROUP + " TEXT,"
+            + COLUMN_NAME_WORKOUT + " TEXT," + COLUMN_NAME_WEIGHT + " TEXT)";
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
@@ -62,12 +64,13 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public static void addWorkout(Context context, Date date, String workout, int weight)
+    public static void addWorkout(Context context, Date date, String muscle_group, String workout, int weight)
     {
         SQLiteDatabase db = getInstance(context).getWritableDatabase();
 
         ContentValues vals = new ContentValues();
         vals.put(COLUMN_NAME_DATE, dateToStr(date));
+        vals.put(COLUMN_NAME_MUSCLE_GROUP, muscle_group);
         vals.put(COLUMN_NAME_WORKOUT, workout);
         vals.put(COLUMN_NAME_WEIGHT, weight);
 

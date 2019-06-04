@@ -35,6 +35,7 @@ public final class WorkoutsContract
     {
         public static final String TABLE_NAME = "WORKOUTS";
         public static final String COLUMN_NAME_DATE = "Date";
+        public static final String COLUMN_NAME_MUSCLE_GROUP = "Muscle_Group";
         public static final String COLUMN_NAME_WORKOUT = "Workout";
         public static final String COLUMN_NAME_WEIGHT = "Weight";
     }

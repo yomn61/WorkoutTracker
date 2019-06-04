@@ -20,6 +20,8 @@ import java.util.List;
 
 import static com.learningmyway.me.workouttracker.ViewConstructionHelper.makeTextView;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_DATE;
+import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry
+        .COLUMN_NAME_MUSCLE_GROUP;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_WEIGHT;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_WORKOUT;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.strToDate;
@@ -58,23 +60,20 @@ public class DisplayWorkoutsActivity extends AppCompatActivity
 
         // Building the Table
         TableLayout tl = (TableLayout) findViewById(R.id.tl);
-        Log.d(TAG, Integer.toString(tl.getChildCount()));
-        // Column headers
-        tl.addView(makeTableRow(new ArrayList<>(Arrays.asList("Date", "Workout", "Weight")), true));
 
-        int numRows = 0;
+        // Column headers
+        tl.addView(makeTableRow(new ArrayList<>(Arrays.asList("Date", "Muscle Group", "Workout", "Weight")), true));
+
         // Adding all of the rows from the database
         while (cursor.moveToNext())
         {
             String date = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_DATE));
+            String musclegroup = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_MUSCLE_GROUP));
             String workout = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_WORKOUT));
             String weight = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_WEIGHT));
 
-            tl.addView(makeTableRow(new ArrayList<>(Arrays.asList(date, workout, weight)), false));
-            numRows++;
+            tl.addView(makeTableRow(new ArrayList<>(Arrays.asList(date, musclegroup, workout, weight)), false));
         }
-
-        Log.d(TAG, "Number of rows put: " + Integer.toString(tl.getChildCount()));
 
         cursor.close();
     }
