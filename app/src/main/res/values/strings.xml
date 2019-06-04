@@ -1,4 +1,30 @@
 <resources>
     <string name="app_name">WorkoutTracker</string>
     <string name="action_settings">Settings</string>
+    <string name="add_workout_button">Add Workout</string>
+    <string name="view_logs">View Logs</string>
+    <string name="weight_no_hint">Amount (Weight/Reps)</string>
+
+    <string-array name="workouts">
+        <item>Crunches</item>
+        <item>Deadlift</item>
+        <item>Dumbbell Row</item>
+        <item>Dumbbell Fly</item>
+        <item>Hyperextension</item>
+        <item>Lat Pulldown</item>
+        <item>PullUps</item>
+        <item>RDL</item>
+        <item>Sitting Row</item>
+        <item>Bench Press</item>
+        <item>Squats</item>
+        <item>Lunges</item>
+        <item>Dumbbell Fly</item>
+        <item>Hyperextension</item>
+        <item>Lat Pulldown</item>
+        <item>PullUps</item>
+        <item>RDL</item>
+        <item>Sitting Row</item>
+        <item>Tricep Dips</item>
+        <item>Skull Crushers</item>
+    </string-array>
 </resources>
