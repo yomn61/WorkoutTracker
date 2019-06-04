@@ -28,4 +28,46 @@
         <item>Tricep Dips</item>
         <item>Skull Crushers</item>
     </string-array>
+
+    <string-array name="muscle_groups">
+        <item>Abs</item>
+        <item>Arms</item>
+        <item>Back</item>
+        <item>Chest</item>
+        <item>Legs</item>
+        <item>Shoulders</item>
+    </string-array>
+
+    <string-array name="abs_workouts">
+        <item>Crunches</item>
+    </string-array>
+
+    <string-array name="back_workouts">
+        <item>Deadlift</item>
+        <item>Dumbbell Row</item>
+        <item>Dumbbell Fly</item>
+        <item>Hyperextension</item>
+        <item>Lat Pulldown</item>
+        <item>PullUps</item>
+        <item>RDL</item>
+        <item>Sitting Row</item>
+    </string-array>
+
+    <string-array name="chest_workouts">
+        <item>Bench Press</item>
+    </string-array>
+
+    <string-array name="legs_workouts">
+        <item>Squats</item>
+        <item>Lunges</item>
+    </string-array>
+
+    <string-array name="arms_workouts">
+        <item>Tricep Dips</item>
+        <item>Skull Crushers</item>
+    </string-array>
+
+    <string-array name="shoulders_workouts">
+        <item>Military Press</item>
+    </string-array>
 </resources>

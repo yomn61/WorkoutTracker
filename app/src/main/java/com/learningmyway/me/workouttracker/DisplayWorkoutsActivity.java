@@ -62,8 +62,6 @@ public class DisplayWorkoutsActivity extends AppCompatActivity
         // Column headers
         tl.addView(makeTableRow(new ArrayList<>(Arrays.asList("Date", "Workout", "Weight")), true));
 
-
-
         int numRows = 0;
         // Adding all of the rows from the database
         while (cursor.moveToNext())
