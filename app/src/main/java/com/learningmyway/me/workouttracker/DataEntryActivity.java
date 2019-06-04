@@ -49,6 +49,19 @@ public class DataEntryActivity extends AppCompatActivity
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         workout_spinner.setAdapter(adapter);
+
+        // Make the calendar specify what date it is on
+        CalendarView calendarView = (CalendarView) findViewById(R.id.workout_date);
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener()
+        {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth)
+            {
+                Calendar c = Calendar.getInstance();
+                c.set(year, month, dayOfMonth);
+                view.setDate(c.getTime().getTime());
+            }
+        });
     }
 
     @Override
@@ -64,6 +77,7 @@ public class DataEntryActivity extends AppCompatActivity
     {
         switch (item.getItemId())
         {
+            // If view_logs, then show the logs
             case R.id.view_logs:
                 viewLogs();
                 return true;
@@ -77,23 +91,35 @@ public class DataEntryActivity extends AppCompatActivity
     {
         EditText editText = (EditText) findViewById(R.id.weight_no);
 
+        // Do not add workout if no value is specified
         if (editText.getText().toString().equals(""))
             return;
 
+        // Get the specified weight or reps
         int weight = Integer.parseInt(editText.getText().toString());
 
+        // Get the specified workout
         Spinner workoutSpinner = (Spinner) findViewById(R.id.workout_spinner);
         String workout = workoutSpinner.getSelectedItem().toString();
 
-        Date date = Calendar.getInstance().getTime();
+        // Get the date specified
+        CalendarView calendarView = (CalendarView) findViewById(R.id.workout_date);
+        Date date = new Date(calendarView.getDate());
 
+        // Add workout to the database
         addWorkout(getApplicationContext(), date, workout, weight);
     }
 
     // Change the screen to the logs
-    public void viewLogs()
+    private void viewLogs()
     {
         Intent intent = new Intent(this, DisplayWorkoutsActivity.class);
         startActivity(intent);
+    }
+
+    public void setToToday(View view)
+    {
+        CalendarView calendarView = (CalendarView) findViewById(R.id.workout_date);
+        calendarView.setDate(Calendar.getInstance().getTime().getTime());
     }
 }

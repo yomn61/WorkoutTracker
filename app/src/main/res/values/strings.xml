@@ -4,6 +4,7 @@
     <string name="add_workout_button">Add Workout</string>
     <string name="view_logs">View Logs</string>
     <string name="weight_no_hint">Amount (Weight/Reps)</string>
+    <string name="today_button">Set to Today</string>
 
     <string-array name="workouts">
         <item>Crunches</item>
