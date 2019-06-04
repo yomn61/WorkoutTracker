@@ -17,6 +17,7 @@ import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_WORKOUT;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.TABLE_NAME;
 import static com.learningmyway.me.workouttracker.WorkoutsContract.dateToStr;
+import static com.learningmyway.me.workouttracker.WorkoutsContract.selectionConstructor;
 
 public class WorkoutsDbHelper extends SQLiteOpenHelper
 {
@@ -75,8 +76,7 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
         vals.put(COLUMN_NAME_WEIGHT, weight);
 
         // Check to see if this entry exists, if does, do not add
-        String selection = COLUMN_NAME_DATE + " = ? AND " + COLUMN_NAME_WORKOUT + " = ? AND " +
-                COLUMN_NAME_WEIGHT + " = ?";
+        String selection = selectionConstructor(true, false, true, true);
         String sortOrder = COLUMN_NAME_DATE + " DESC";
         String[] selectionArgs = {dateToStr(date), workout, Integer.toString(weight)};
         Cursor cursor = db.query(
@@ -94,11 +94,6 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
             return;
 
         long newRowId = db.insert(TABLE_NAME, null, vals);
-
-        if (newRowId == -1)
-        {
-            /// TODO: Add stuff
-        }
     }
 
     public static void removeWorkout(Context context, Date date, String workout, int weight)
@@ -106,13 +101,14 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
         SQLiteDatabase db = getInstance(context).getWritableDatabase();
 
         // Define 'where' part of query.
-        String selection = COLUMN_NAME_DATE + " = ? AND " + COLUMN_NAME_WORKOUT + " = ? AND " +
-                COLUMN_NAME_WEIGHT + " = ?";
+        String selection = selectionConstructor(true, false, true, true);
         // Specify arguments in placeholder order.
         String[] selectionArgs = {dateToStr(date), workout, Integer.toString(weight)};
         Log.d(TAG, "removeWorkout: " + selection);
-        // Issue SQL statement.
+        // Issue SQL statement
         int deletedRows = db.delete(TABLE_NAME, selection, selectionArgs);
+
+        Log.d(TAG, "removedWorkouts: " + Integer.toString(deletedRows));
     }
 
     public static Cursor getAll(Context context)

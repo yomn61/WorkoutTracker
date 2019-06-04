@@ -62,17 +62,16 @@ public class DisplayWorkoutsActivity extends AppCompatActivity
         TableLayout tl = (TableLayout) findViewById(R.id.tl);
 
         // Column headers
-        tl.addView(makeTableRow(new ArrayList<>(Arrays.asList("Date", "Muscle Group", "Workout", "Weight")), true));
+        tl.addView(makeTableRow(new ArrayList<>(Arrays.asList("Date", "Workout", "Weight")), true));
 
         // Adding all of the rows from the database
         while (cursor.moveToNext())
         {
             String date = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_DATE));
-            String musclegroup = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_MUSCLE_GROUP));
             String workout = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_WORKOUT));
             String weight = cursor.getString(cursor.getColumnIndex(COLUMN_NAME_WEIGHT));
 
-            tl.addView(makeTableRow(new ArrayList<>(Arrays.asList(date, musclegroup, workout, weight)), false));
+            tl.addView(makeTableRow(new ArrayList<>(Arrays.asList(date, workout, weight)), false));
         }
 
         cursor.close();
@@ -95,11 +94,8 @@ public class DisplayWorkoutsActivity extends AppCompatActivity
     public void addCheckBoxes(View view)
     {
         TableLayout tl = (TableLayout) findViewById(R.id.tl);
+        TextView textView = makeTextView(getApplicationContext(), "Remove", true);
 
-        String buttonDescripts = "Check to Remove";
-        TextView textView = new TextView(getApplicationContext());
-        textView.setText(buttonDescripts);
-        textView.setTypeface(null, Typeface.BOLD);
         ((TableRow) tl.getChildAt(0)).addView(textView, 0);
 
         Log.d(TAG, Integer.toString(tl.getChildCount()));

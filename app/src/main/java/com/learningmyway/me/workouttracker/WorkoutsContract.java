@@ -7,6 +7,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_DATE;
+import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry
+        .COLUMN_NAME_MUSCLE_GROUP;
+import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_WEIGHT;
+import static com.learningmyway.me.workouttracker.WorkoutsContract.WorkoutEntry.COLUMN_NAME_WORKOUT;
+
 public final class WorkoutsContract
 {
     private WorkoutsContract() {}
@@ -28,6 +34,22 @@ public final class WorkoutsContract
         {
             return new Date();
         }
+    }
+
+    public static String selectionConstructor(boolean date, boolean muscleGroup, boolean workout, boolean weight)
+    {
+        String selection = "";
+
+        if (date)
+            selection += COLUMN_NAME_DATE + " = ?";
+        if (muscleGroup)
+            selection += (selection.equals("") ? "" : " AND ") + COLUMN_NAME_MUSCLE_GROUP + " = ?";
+        if (workout)
+            selection += (selection.equals("") ? "" : " AND ") + COLUMN_NAME_WORKOUT + " = ?";
+        if (weight)
+            selection += (selection.equals("") ? "" : " AND ") + COLUMN_NAME_WEIGHT + " = ?";
+
+        return selection;
     }
 
     /* Inner class that defines the table contents */
