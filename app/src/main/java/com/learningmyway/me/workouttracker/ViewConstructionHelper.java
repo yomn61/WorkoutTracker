@@ -2,6 +2,7 @@ package com.learningmyway.me.workouttracker;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import static android.view.View.TEXT_ALIGNMENT_CENTER;

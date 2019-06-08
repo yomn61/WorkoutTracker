@@ -111,6 +111,41 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
         Log.d(TAG, "removedWorkouts: " + Integer.toString(deletedRows));
     }
 
+    private static Cursor databaseQuery(Context context, String selection, String[] selectionArgs, String sortOrder)
+    {
+        SQLiteDatabase db = getInstance(context).getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME,             // The table to query
+                                 null,           // The array of columns to return (pass null to
+                                 // get all)
+                                 selection,              // The columns for the WHERE clause
+                                 selectionArgs,          // The values for the WHERE clause
+                                 null,                  // don't group the rows
+                                 null,                   // don't filter by row groups
+                                 sortOrder               // The sort order
+        );
+
+        return cursor;
+    }
+
+    public static Cursor getMuscleGroup(Context context, String muscleGroup)
+    {
+        String sortOrder = COLUMN_NAME_DATE + " DESC";
+        String selection = selectionConstructor(false, true, false, false);
+        String[] selectionArgs = {muscleGroup};
+
+        return databaseQuery(context, selection, selectionArgs, sortOrder);
+    }
+
+    public static Cursor getWorkout(Context context, String workout)
+    {
+        String sortOrder = COLUMN_NAME_DATE + " DESC";
+        String selection = selectionConstructor(false, false, true, false);
+        String[] selectionArgs = {workout};
+
+        return databaseQuery(context, selection, selectionArgs, sortOrder);
+    }
+
     public static Cursor getAll(Context context)
     {
         String sortOrder = COLUMN_NAME_DATE + " DESC";
@@ -119,18 +154,6 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
 
     public static Cursor getAll(Context context, String sortOrder)
     {
-        SQLiteDatabase db = getInstance(context).getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_NAME,             // The table to query
-                                 null,           // The array of columns to return (pass null to
-                                 // get all)
-                                 null,              // The columns for the WHERE clause
-                                 null,          // The values for the WHERE clause
-                                 null,                  // don't group the rows
-                                 null,                   // don't filter by row groups
-                                 sortOrder               // The sort order
-        );
-
-        return cursor;
+        return databaseQuery(context, null, null, sortOrder);
     }
 }

@@ -5,6 +5,7 @@
     <string name="view_logs">View Logs</string>
     <string name="weight_no_hint">Amount (Weight/Reps)</string>
     <string name="today_button">Set to Today</string>
+    <string name="default_filter">Filter</string>
 
     <string-array name="muscle_groups">
         <item>Abs</item>
@@ -27,13 +28,13 @@
     </string-array>
 
     <string-array name="back_workouts">
+        <item>Barbell Row</item>
         <item>ChinUps</item>
         <item>Deadlift</item>
         <item>Dumbbell Row</item>
         <item>Hyperextension</item>
         <item>Lat Pulldown</item>
         <item>PullUps</item>
-        <item>RDL</item>
         <item>Sitting Row</item>
     </string-array>
 
@@ -57,6 +58,7 @@
         <item>Leg Extensions</item>
         <item>Leg Press</item>
         <item>Lunges</item>
+        <item>RDL</item>
     </string-array>
 
     <string-array name="arms_workouts">
