@@ -8,6 +8,9 @@
         android:title="@string/view_logs"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/to_graph"
+        android:title="@string/to_graph" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="101"
         android:title="@string/action_settings"

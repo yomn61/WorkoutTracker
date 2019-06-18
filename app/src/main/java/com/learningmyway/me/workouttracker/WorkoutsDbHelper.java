@@ -34,7 +34,7 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
 
     private static WorkoutsDbHelper ourInstance = null;
 
-    public static WorkoutsDbHelper getInstance(Context context)
+    private synchronized static WorkoutsDbHelper getInstance(Context context)
     {
         if (ourInstance == null)
             ourInstance = new WorkoutsDbHelper(context);
@@ -133,6 +133,15 @@ public class WorkoutsDbHelper extends SQLiteOpenHelper
         String sortOrder = COLUMN_NAME_DATE + " DESC";
         String selection = selectionConstructor(false, true, false, false);
         String[] selectionArgs = {muscleGroup};
+
+        return databaseQuery(context, selection, selectionArgs, sortOrder);
+    }
+
+    public static Cursor getWorkoutOldFirst(Context context, String workout)
+    {
+        String sortOrder = COLUMN_NAME_DATE + " ASC, " + COLUMN_NAME_WEIGHT + " ASC";
+        String selection = selectionConstructor(false, false, true, false);
+        String[] selectionArgs = {workout};
 
         return databaseQuery(context, selection, selectionArgs, sortOrder);
     }

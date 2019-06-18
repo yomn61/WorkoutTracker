@@ -45,7 +45,7 @@ public class DisplayWorkoutsActivity extends AppCompatActivity
         // Init muscle_group_spinner with the values in the strings file
         Spinner muscle_group_spinner = (Spinner) findViewById(R.id.filter_spinner);
         List<CharSequence> list = new ArrayList<CharSequence>(Arrays.asList(getResources().getStringArray(R.array.muscle_groups)));
-        list.add(0, getString(R.string.default_filter));
+         list.add(0, getString(R.string.default_filter));
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(getApplicationContext(),
                                                                             android.R.layout.simple_spinner_item,
                                                                             list);

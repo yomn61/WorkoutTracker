@@ -41,7 +41,8 @@ public class DataEntryActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                to_graph();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
 
@@ -78,9 +79,25 @@ public class DataEntryActivity extends AppCompatActivity
             case R.id.view_logs:
                 viewLogs();
                 return true;
+
+            case R.id.to_graph:
+                to_graph();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void to_graph()
+    {
+        // Get the specified workout
+        Spinner workoutSpinner = (Spinner) findViewById(R.id.workout_spinner);
+        String workout = workoutSpinner.getSelectedItem().toString();
+
+        Intent intent = new Intent(this, ProgressGraphActivity.class);
+        intent.putExtra(ProgressGraphActivity.workoutExtra, workout);
+
+        startActivity(intent);
     }
 
     // Add workout to the table
@@ -95,6 +112,7 @@ public class DataEntryActivity extends AppCompatActivity
         // Get the specified weight or reps
         int weight = Integer.parseInt(editText.getText().toString());
 
+        // Get the specified muscle group
         Spinner muscleGroupSpinner = (Spinner) findViewById(R.id.muscle_group_spinner);
         String muscleGroup = muscleGroupSpinner.getSelectedItem().toString();
 
@@ -108,6 +126,9 @@ public class DataEntryActivity extends AppCompatActivity
 
         // Add workout to the database
         addWorkout(getApplicationContext(), date, muscleGroup, workout, weight);
+
+        // Clear the workout weight
+        editText.setText("");
     }
 
     private void initSpinners()
@@ -144,10 +165,7 @@ public class DataEntryActivity extends AppCompatActivity
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
 

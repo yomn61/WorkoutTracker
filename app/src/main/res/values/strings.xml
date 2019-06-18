@@ -6,6 +6,7 @@
     <string name="weight_no_hint">Amount (Weight/Reps)</string>
     <string name="today_button">Set to Today</string>
     <string name="default_filter">Filter</string>
+    <string name="to_graph">See Progress</string>
 
     <string-array name="muscle_groups">
         <item>Abs</item>
